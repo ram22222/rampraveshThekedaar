@@ -6,7 +6,6 @@ require("dotenv").config();
 const blogRoutes = require("./View/blogRoutes");
 const enquiryRoutes = require("./View/enquiryRoutes");
 var bodyParser = require("body-parser");
-const hostname = "0.0.0.0";
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -25,6 +24,6 @@ mongoose.connect(`mongodb+srv://Amit:${
     console.log("DB Connection Failed.");
 });
 
-app.listen(process.env.PORT || 3001, hostname, () => {
+app.listen(process.env.PORT || 3001, () => {
     console.log("Server started at port 3001");
 });
