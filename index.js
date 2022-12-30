@@ -1,19 +1,22 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const blogRoutes = require("./View/blogRoutes");
 const enquiryRoutes = require("./View/enquiryRoutes");
 var bodyParser = require("body-parser");
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(blogRoutes, enquiryRoutes);
 app.use(express.json());
+app.use(cors({
+    origin: "https://rampraveshthekedaar.in"
+}));
 
-mongoose.connect(`mongodb+srv://Amit:${
-    process.env.REACT_APP_ACCESS_KEY
-}@rampraveshthekedar.1amjyvv.mongodb.net/blogData?retryWrites=true&w=majorityy`, {
+mongoose.connect(`mongodb+srv://Amit:${process.env.REACT_APP_ACCESS_KEY
+    }@rampraveshthekedar.1amjyvv.mongodb.net/blogData?retryWrites=true&w=majorityy`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
