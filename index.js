@@ -9,11 +9,11 @@ var bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(blogRoutes, enquiryRoutes);
 app.use(express.json());
 app.use(cors({
     origin: "https://rampraveshthekedaar.in"
 }));
+app.use(blogRoutes, enquiryRoutes);
 
 mongoose.connect(`mongodb+srv://Amit:${process.env.REACT_APP_ACCESS_KEY
     }@rampraveshthekedar.1amjyvv.mongodb.net/blogData?retryWrites=true&w=majorityy`, {
